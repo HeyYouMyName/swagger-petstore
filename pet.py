@@ -1,7 +1,7 @@
-import requests
 import logging
-from faker import Faker
 
+import requests
+from faker import Faker
 
 fake = Faker()
 
@@ -24,7 +24,8 @@ class Pet:
         self.status = status
 
     @staticmethod
-    def create_single_pet(session: requests.Session, pet_id=None, category=None, name=None, photo_urls=None, tags=None, status=None):
+    def create_single_pet(session: requests.Session, pet_id=None, category=None, name=None, photo_urls=None, tags=None,
+                          status=None):
 
         url_create = "https://petstore.swagger.io/v2/pet"
         if pet_id is None:
@@ -81,30 +82,3 @@ class Pet:
         response_create_pet = session.get(url_to_get)
         logging.info(response_create_pet)
         return response_create_pet
-
-
-
-
-
-    # async def delete(self, session: aiohttp.ClientSession):
-    #     url_delete = f"/v2/user/{self.username}"
-    #     response_delete = await session.delete(url_delete)
-    #     logging.info(response_delete)
-    #
-    # @staticmethod
-    # async def delete_by_username(username: str, session: aiohttp.ClientSession):
-    #     url_delete = f"/v2/user/{username}"
-    #     response_delete = await session.delete(url_delete)
-    #     logging.info(response_delete)
-    #
-    # @staticmethod
-    # async def log_user_out_of_the_system(session: aiohttp.ClientSession):
-    #     url_logout = f"/v2/user/logout"
-    #     response_logout = await session.get(url_logout)
-    #     logging.info(response_logout)
-    #
-    # @staticmethod
-    # async def log_user_in_the_system(username: str, password: str, session: aiohttp.ClientSession):
-    #     url_logout = f"/v2/user/login/?username={username}&password={password}"
-    #     response_logout = await session.get(url_logout)
-    #     logging.info(response_logout)

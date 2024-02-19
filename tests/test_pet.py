@@ -96,5 +96,5 @@ class TestPet:
         logging.info(response_create)
         response_create_json = response_create.json()
         for pet in response_create_json:
-            assert PetStatus.pending.name == pet["status"]
+            assert pet["status"] == PetStatus.pending.name
         assert response_create.status_code == 200

@@ -3,7 +3,7 @@ from enum import Enum
 
 import requests
 
-from pet import Pet
+from api_models.pet import Pet
 
 
 class PetStatus(Enum):

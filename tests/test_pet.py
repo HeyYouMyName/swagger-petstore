@@ -34,8 +34,7 @@ class TestPet:
         get_updated_pet = no_auth_session.get(f"{self.base_url}/{pet_to_update.id}")
         updated_pet_json = get_updated_pet.json()
         # clean up
-        Pet.delete_by_id(updated_pet_json["id"],
-                         no_auth_session)  # needs to stay static , cause we not always use Pet class to create response
+        Pet.delete_by_id(updated_pet_json["id"],no_auth_session)  # needs to stay static , cause we not always use Pet class to create response
         # assert
         assert response_create.status_code == 200
         assert updated_pet_json["id"] == created_pet_json["id"]

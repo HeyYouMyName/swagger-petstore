@@ -68,3 +68,18 @@ class TestUser:
 
 
 
+    # def test_clean_up_after_everyone_pet_by_status(
+    #     self,
+    #     no_auth_session: requests.Session,
+    # ):
+    #     test_url_suffix = "https://petstore.swagger.io/v2/pet/findByStatus?status=sold"
+    #
+    #
+    #
+    #     response_create = no_auth_session.get(test_url_suffix)
+    #     logging.info(response_create)
+    #     response_create_json = response_create.json()
+    #     print(response_create_json)
+    #     for i in response_create_json:
+    #         no_auth_session.delete(self.base_url + str(i["id"]))
+    #     assert response_create.status_code == 200

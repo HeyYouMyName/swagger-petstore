@@ -66,7 +66,7 @@ class TestPet:
                     "name": "string"
                 }
             ],
-            "status": str(PetStatus.pending)
+            "status": PetStatus.pending.name
         }
 
         response_create = no_auth_session.post(self.base_url, json=pet_request_body_create)
@@ -92,9 +92,9 @@ class TestPet:
         self,
         no_auth_session: requests.Session,
     ):
-        response_create = no_auth_session.get(f"{self.base_url}/findByStatus?status={PetStatus.pending}")
+        response_create = no_auth_session.get(f"{self.base_url}/findByStatus?status={PetStatus.pending.name}")
         logging.info(response_create)
         response_create_json = response_create.json()
         for pet in response_create_json:
-            assert PetStatus.pending == pet["status"]
+            assert PetStatus.pending.name == pet["status"]
         assert response_create.status_code == 200

@@ -55,7 +55,8 @@ class TestStore:
         assert created_order_json["id"] == create_order.id
         assert created_order_json["petId"] == create_order.petId
         assert created_order_json["quantity"] == create_order.quantity
-        assert datetime.strptime(created_order_json["shipDate"], '%Y-%m-%dT%H:%M:%S.%f%z').replace(microsecond=0) == datetime.strptime(create_order.shipDate, '%Y-%m-%dT%H:%M:%S.%f%z').replace(microsecond=0)
+        assert created_order_json["shipDate"] == create_order.shipDate
         assert created_order_json["status"] == create_order.status
         assert created_order_json["complete"] == create_order.complete
         assert response_create.status_code == 200
+# datetime.strptime(created_order_json["shipDate"], '%Y-%m-%dT%H:%M:%S.%f%z').replace(microsecond=0) == datetime.strptime(create_order.shipDate, '%Y-%m-%dT%H:%M:%S.%f%z').replace(microsecond=0)

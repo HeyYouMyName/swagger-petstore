@@ -7,6 +7,8 @@ fake = Faker()
 
 
 class Pet:
+    base_url = "https://petstore.swagger.io/v2/pet"
+
     def __init__(
         self,
         pet_id: int,
@@ -27,7 +29,7 @@ class Pet:
     def create_single_pet(session: requests.Session, pet_id=None, category=None, name=None, photo_urls=None, tags=None,
                           status=None):
 
-        url_create = "https://petstore.swagger.io/v2/pet"
+        url_create = Pet.base_url
         if pet_id is None:
             pet_id = fake.random_int(min=5, max=666)
         if category is None:
@@ -72,13 +74,13 @@ class Pet:
 
     @staticmethod
     def delete_by_id(pet_id, session: requests.Session):
-        url_delete = f"https://petstore.swagger.io/v2/pet/{pet_id}"
+        url_delete = f"{Pet.base_url}/{pet_id}"
         response_delete = session.delete(url_delete)
         logging.info(response_delete)
 
     @staticmethod
     def get_single_pet_by_id(pet_id, session: requests.Session):
-        url_to_get = f"https://petstore.swagger.io/v2/pet/{pet_id}"
+        url_to_get = f"{Pet.base_url}/{pet_id}"
         response_create_pet = session.get(url_to_get)
         logging.info(response_create_pet)
         return response_create_pet

@@ -1,6 +1,7 @@
 import logging
 import random
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
+
 import requests
 
 
@@ -22,15 +23,6 @@ class Store:
         self.shipDate = ship_date
         self.status = status
         self.complete = complete
-
-    # store_request_body_create = {
-    #     "id": random.randint(1, 10),
-    #     "petId": 0,
-    #     "quantity": 0,
-    #     "shipDate": "2024-02-19T16:43:04.637Z",
-    #     "status": "placed",
-    #     "complete": True
-    # }
 
     @staticmethod
     def create_single_order(session: requests.Session, order_id=None, pet_id=None, quantity=None, ship_date=None, status=None, complete=None):
@@ -81,9 +73,3 @@ class Store:
         url_delete = f"{Store.base_url}/{store_id}"
         response_delete = session.delete(url_delete)
         logging.info(response_delete)
-
-    @staticmethod
-    def generate_random_data():
-        start_date = datetime(2020, 1, 1)
-        end_date = datetime(2024, 2, 20)
-        return start_date + timedelta(seconds=random.randint(0, int((end_date - start_date).total_seconds())))
